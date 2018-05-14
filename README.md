@@ -1,24 +1,12 @@
-# README
+# Admin Panel
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A webapp based Administration Panel to manage students, teachers and courses.
 
-Things you may want to cover:
+Packages used:
 
-* Ruby version
+* Ruby
 
-* System dependencies
+* Rails 5.2.0
 
-* Configuration
+* ActiveRecord
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
