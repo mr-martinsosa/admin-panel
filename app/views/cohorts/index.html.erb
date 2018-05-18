@@ -1,7 +1,33 @@
-<h1>Cohorts#index</h1>
-<p>Find me in app/views/cohorts/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Cohorts</h1>
 
 <table>
+  <thead>
     <tr>
-    <th> 
-<table>
+      <th>Name</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Course</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cohorts.each do |cohort| %>
+      <tr>
+        <td><%= cohort.name %></td>
+        <td><%= cohort.start_date %></td>
+        <td><%= cohort.end_date %></td>
+        <td><%= cohort.course_id %></td>
+        <td><%= link_to 'Show', cohort %></td>
+        <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
+        <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cohort', new_cohort_path %>
