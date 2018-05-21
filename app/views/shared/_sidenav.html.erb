@@ -1,0 +1,36 @@
+ <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <span data-feather="home"></span>
+                <%= link_to "Home", root_path, class: "nav-link" %>
+                <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <span data-feather="file"></span>
+                <%= link_to "Courses", courses_path, class: "nav-link" %>
+                </a>
+              </li>
+              <li class="nav-item">
+                <span data-feather="briefcase"></span>
+                <%= link_to "Teachers", teachers_path, class: "nav-link" %>
+                </a>
+              </li>
+              <li class="nav-item">
+                <span data-feather="users"></span>
+                <%= link_to "Students", students_path, class: "nav-link" %>  
+                </a>
+              </li>
+              <li class="nav-item">
+                <span data-feather="bar-chart-2"></span>
+                <%= link_to "Cohorts", cohorts_path, class: "nav-link" %>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </div>
+</nav>

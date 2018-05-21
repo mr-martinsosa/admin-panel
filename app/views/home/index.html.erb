@@ -1,15 +1,136 @@
-<section class="text-center container">
-  <div class="card card-container">
-    <form class="form-signin">
-      <div class="form-group">
-        <label for="inputEmail">Email address</label>
-        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-      </div>
-      <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-primary">Sign In</button>
-    </form>
+<% if !signed_in? %>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+      </header>
+
+      <main role="main" class="inner cover">
+        <h1 class="cover-heading">Panel</h1>
+        <p class="lead">Sign In and manage!</p>
+          <%= button_to "Sign In", sign_in_path, class: "btn btn-primary" %>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+      </footer>
+</div>
+
+<% else %>
+<p id="notice"><%= notice %></p>
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+<h1>Home</h1>
+  <table class="table table-striped table-sm">
+  <thead>
+  <th></th>
+  </thead>
+  </table>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <section class="table-responsive">
+      <table class="table table-striped table-sm">
+      <h2> Students </h2>
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Age</th>
+            <th>Education</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @students.each do |student| %>
+            <tr>
+              <td><%= student.first_name %></td>
+              <td><%= student.last_name %></td>
+              <td><%= student.age %></td>
+              <td><%= student.education %></td>
+              <td><%= link_to 'Show', student %></td>
+              <td><%= link_to 'Edit', edit_student_path(student) %></td>
+              <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+
+      <table class="table table-striped table-sm">
+      <h2> Courses </h2>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Hours</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <td><%= course.name %></td>
+            <td><%= course.hours %></td>
+            <td><%= link_to 'Show', course %></td>
+            <td><%= link_to 'Edit', edit_course_path(course) %></td>
+            <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <table class="table table-striped table-sm">
+    <h2> Teachers </h2>
+      <thead>
+        <tr>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Age</th>
+          <th>Salary</th>
+          <th>Education</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @teachers.each do |teacher| %>
+          <tr>
+            <td><%= teacher.first_name %></td>
+            <td><%= teacher.last_name %></td>
+            <td><%= teacher.age %></td>
+            <td>$<%= teacher.salary %></td>
+            <td><%= teacher.education %></td>
+            <td><%= link_to 'Show', teacher %></td>
+            <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
+            <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <table class="table table-striped table-sm">
+      <h2> Cohorts </h2>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Course</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @cohorts.each do |cohort| %>
+            <tr>
+              <td><%= cohort.name %></td>
+              <td><%= cohort.start_date %></td>
+              <td><%= cohort.end_date %></td>
+              <td><%= cohort.course_id %></td>
+              <td><%= link_to 'Show', cohort %></td>
+              <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
+              <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
   </div>
-</section>
+</main>
+<% end %>

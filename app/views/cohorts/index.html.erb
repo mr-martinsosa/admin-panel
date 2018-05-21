@@ -1,33 +1,38 @@
 <p id="notice"><%= notice %></p>
 
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 <h1>Cohorts</h1>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <section class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Course</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Course</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cohorts.each do |cohort| %>
-      <tr>
-        <td><%= cohort.name %></td>
-        <td><%= cohort.start_date %></td>
-        <td><%= cohort.end_date %></td>
-        <td><%= cohort.course_id %></td>
-        <td><%= link_to 'Show', cohort %></td>
-        <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
-        <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <% @cohorts.each do |cohort| %>
+            <tr>
+              <td><%= cohort.name %></td>
+              <td><%= cohort.start_date %></td>
+              <td><%= cohort.end_date %></td>
+              <td><%= cohort.course_id %></td>
+              <td><%= link_to 'Show', cohort %></td>
+              <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
+              <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+          <h5> <%= link_to 'New Cohort', new_cohort_path %> </h5>
+      </div>
+    </main>
 
 <br>
 
-<%= link_to 'New Cohort', new_cohort_path %>
+

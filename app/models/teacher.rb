@@ -1,3 +1,4 @@
 class Teacher < ApplicationRecord
-  has_many :courses, through: :cohorts
+  has_many :cohort_teachers
+  has_many :cohorts, through: :cohort_teachers
 end

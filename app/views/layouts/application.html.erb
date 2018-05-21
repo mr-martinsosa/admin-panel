@@ -9,22 +9,33 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="text-center">
+ 
   <% if signed_in? %>
-    Signed in as: <%= current_user.email %>
-    <%= button_to 'Sign out', sign_out_path, method: :delete %>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <%= link_to 'Panel', root_path, method: :get, class: "navbar-brand col-sm-3 col-md-2 mr-0" %>
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            Signed in as: <%= current_user.email %>
+          </li>
+          <li class="nav-item text-nowrap">
+            <%= button_to 'Sign out', sign_out_path, method: :delete %>
+          </li>
+        </ul>
+    </nav>
+    <%= render :partial => 'shared/sidenav' %>
+    
+    
   <% else %>
-  
-  <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Panel</a>
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <%= link_to 'Sign in',  sign_in_path, class: "nav-link" %>
-        </li>
-      </ul>
-  </nav>
-
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+          <%= link_to 'Panel', root_path, method: :get, class: "navbar-brand col-sm-3 col-md-2 mr-0" %>
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <i data-feather="log-in"></i>
+              <%= button_to 'Sign in',  sign_in_path, method: :get, class: "btn btn-primary" %>
+            </li>
+          </ul>
+      </nav>
     
   <% end %>
 
@@ -35,6 +46,11 @@
   </div>
 
     <%= yield %>
-
+   
+   <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
   </body>
 </html>
