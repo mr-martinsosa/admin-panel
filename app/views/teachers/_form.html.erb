@@ -23,17 +23,19 @@
 
   <div class="field">
     <%= form.label :age %>
-    <%= form.number_field :age %>
+    <%= form.select :age, (18..149) %>
   </div>
 
   <div class="field">
     <%= form.label :salary %>
-    <%= form.number_field :salary %>
+    <%= form.select :salary, ["10000", "20000", "30000", "40000", "50000",
+    "60000", "70000", "80000", "90000", "100000", "110000", "120000",
+    "130000", "140000", "150000"] %>
   </div>
 
   <div class="field">
     <%= form.label :education %>
-    <%= form.text_field :education %>
+    <%= form.select :education, ["HS", "College", "Masters", "PH.D"] %>
   </div>
 
   <div class="actions">
