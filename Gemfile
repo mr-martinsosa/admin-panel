@@ -63,3 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'clearance'
 gem 'bootstrap'
+gem 'sentry-raven'
+
+group :production do
+  gem 'pg'
+end
