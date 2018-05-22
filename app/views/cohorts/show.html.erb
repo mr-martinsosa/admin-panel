@@ -17,8 +17,15 @@
 
 <p>
   <strong>Course:</strong>
-  <%= @cohort.course_id %>
+  <%= Course.find(@cohort.course_id).name%>
 </p>
+
+<p> Current Students </p>
+<% if @cohort.students %>
+      <% @cohort.students.each do |students| %>
+        <%= students.full_name %><br />
+      <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <%= link_to 'Back', cohorts_path %>

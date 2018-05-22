@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :teachers
   resources :cohorts
   resources :courses
+  resources :cohort_teachers
+  resources :cohort_students
   root to: 'home#index'
   get '/courses', to: 'courses#index'
   get '/students', to: 'students#index'

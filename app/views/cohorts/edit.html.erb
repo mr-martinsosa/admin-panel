@@ -3,5 +3,38 @@
 
 <%= render 'form', cohort: @cohort %>
 
+
+<%= form_for @cohort_teacher do |form| %>
+    <%= form.collection_select(:teacher_id, Teacher.all, :id, :full_name) %>
+    <%= form.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+    <%= form.submit "Change or Add Teacher" %>
+  <% end %>
+  
+  <br>
+
+  <h3>Current Students:</h3>
+    <% if @cohort.students %>
+      <% @cohort.students.each do |students| %>
+        <%= students.full_name %><br />
+      <% end %>
+    <% end %>
+  <br />
+  <%= form_for @cohort_student, method: :create do |form| %>
+    <%= form.collection_select(:student_id, Student.all, :id, :full_name) %>
+    <%= form.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+    <%= form.submit "Add Student" %>
+  <% end %>
+
+  <% if @cohort_student_remove %>
+    <%= form_for @cohort_student_remove, method: :delete do |form| %>
+      <%= form.collection_select(:student_id, CohortStudent.find_by(cohort_id: params[:id]).cohort.students, :id, :full_name) %>
+      <%= form.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+      <%= form.submit "Remove Student" %>
+    <% end %>
+  <% end %>
+
+
+
+
 <%= link_to 'Show', @cohort %> |
 <%= link_to 'Back', cohorts_path %>

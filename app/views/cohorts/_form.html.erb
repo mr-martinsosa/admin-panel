@@ -27,11 +27,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :course_id %>
-    <%= form.number_field :course_id %>
+    <%= form.label Course %>
+    <%= form.collection_select(:course_id, Course.all, :id, :name) %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+

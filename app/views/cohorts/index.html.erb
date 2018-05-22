@@ -21,7 +21,7 @@
               <td><%= cohort.name %></td>
               <td><%= cohort.start_date %></td>
               <td><%= cohort.end_date %></td>
-              <td><%= cohort.course_id %></td>
+              <td><%= Course.find(cohort.course_id).name %></td>
               <td><%= link_to 'Show', cohort %></td>
               <td><%= link_to 'Edit', edit_cohort_path(cohort) %></td>
               <td><%= link_to 'Destroy', cohort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
