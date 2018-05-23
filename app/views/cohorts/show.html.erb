@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<br/>
 <p>
   <strong>Name:</strong>
   <%= @cohort.name %>
@@ -20,12 +20,28 @@
   <%= Course.find(@cohort.course_id).name%>
 </p>
 
-<p> Current Students </p>
-<% if @cohort.students %>
-      <% @cohort.students.each do |students| %>
-        <%= students.full_name %><br />
-      <% end %>
-<% end %>
+<p> 
+  <strong>Current Teacher:</strong>
+  <% if @cohort.teacher %>
+    <%= @cohort.teacher.full_name %> 
+  <% else %>
+      No teacher, add a <%= link_to 'teacher', edit_cohort_path(@cohort) %>
+  <% end %>
+</p>
+
+
+
+<p> 
+  <strong>Current Students:</strong> 
+  <% if @cohort.students.count > 0%>
+    <% @cohort.students.each do |students| %>
+      <%= students.full_name %><br />
+    <% end %>
+  <% else %>
+    No students, add a <%= link_to 'student', edit_cohort_path(@cohort) %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_cohort_path(@cohort) %> |
 <%= link_to 'Back', cohorts_path %>

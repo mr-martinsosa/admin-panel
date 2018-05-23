@@ -1,3 +1,4 @@
+<br>
 <% if !signed_in? %>
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
@@ -5,8 +6,9 @@
 
       <main role="main" class="inner cover">
         <h1 class="cover-heading">Panel</h1>
-        <p class="lead">Sign In and manage!</p>
-          <%= button_to "Sign In", sign_in_path, class: "btn btn-primary" %>
+        <br>
+        <h2 class="lead">Sign In and manage!</h3> <br>
+          <%= button_to 'Sign in',  sign_in_path, method: :get, class: "btn btn-primary" %>
       </main>
 
       <footer class="mastfoot mt-auto">

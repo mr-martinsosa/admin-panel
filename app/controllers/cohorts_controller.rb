@@ -24,6 +24,7 @@ class CohortsController < ApplicationController
 
   # GET /cohorts/1/edit
   def edit
+    @cohort_students = CohortStudent.all
     @cohort_student_remove = CohortStudent.find_by(cohort_id: params[:id])
     if CohortTeacher.find_by(cohort_id: params[:id])
       @cohort_teacher = CohortTeacher.find_by(cohort_id: params[:id])
@@ -31,6 +32,7 @@ class CohortsController < ApplicationController
       @cohort_teacher = CohortTeacher.new
     end
     @cohort_student = CohortStudent.new
+    @students = Student.where.not(id: @cohort_students.each{|cohort_student| cohort_student.student_id})
   end
 
   # POST /cohorts

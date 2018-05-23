@@ -29,6 +29,11 @@
                 <%= link_to "Cohorts", cohorts_path, class: "nav-link" %>
                 </a>
               </li>
+              <li class="nav-item">
+                <span data-feather="log-out"></span>
+                <%= link_to 'Sign out', sign_out_path, class: "nav-link", method: :delete%>
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -1,3 +1,5 @@
+<br/>
+
 <p id="notice"><%= notice %></p>
 <h1>Editing Cohort</h1>
 
@@ -14,21 +16,24 @@
 
   <h3>Current Students:</h3>
     <% if @cohort.students %>
-      <% @cohort.students.each do |students| %>
-        <%= students.full_name %><br />
+      <% @cohort.students.each do |student| %>
+        <%= student.full_name %><br />
       <% end %>
     <% end %>
   <br />
   <%= form_for @cohort_student, method: :create do |form| %>
-    <%= form.collection_select(:student_id, Student.all, :id, :full_name) %>
-    <%= form.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
-    <%= form.submit "Add Student" %>
-  <% end %>
+      <%= form.collection_select(:student_id, @students, :id, :full_name) %>
+      <%= form.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= form.submit "Add Student" %>
+    <% end %>
+
 
   <% if @cohort_student_remove %>
     <%= form_for @cohort_student_remove, method: :delete do |form| %>
       <%= form.collection_select(:student_id, CohortStudent.find_by(cohort_id: params[:id]).cohort.students, :id, :full_name) %>
       <%= form.hidden_field(:cohort_id, value: "#{@cohort.id}") %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
       <%= form.submit "Remove Student" %>
     <% end %>
   <% end %>
